@@ -1,0 +1,42 @@
+.workspace {
+  width: 70%;
+  height: 100vh;
+
+  &-time {
+    width: 100%;
+    color: grey;
+    text-align: center;
+
+    margin-top: 15px;
+  }
+
+  &-title {
+    display: flex;
+    justify-content: center;
+    input {
+      border: none;
+      outline: none;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+      width: 100%;
+      margin: 10px;
+      height: 30px;
+      padding: 10px;
+      resize: none;
+    }
+  }
+
+  &-textarea {
+    display: flex;
+    justify-content: center;
+
+    textarea {
+      display: block;
+      margin: 10px;
+      width: 100%;
+      outline: none;
+      height: calc(70vh - 51px);
+      resize: none;
+    }
+  }
+}

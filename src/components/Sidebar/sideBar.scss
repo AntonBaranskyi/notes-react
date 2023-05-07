@@ -1,0 +1,30 @@
+.sidebar {
+  width: 30%;
+  height: 100vh;
+
+  &-notes {
+    height: 100vh;
+    overflow-y: scroll;
+
+    &-note {
+      padding: 25px;
+      cursor: pointer;
+    }
+    &-note:hover {
+      background: #ddd;
+    }
+  }
+  &-title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  p {
+    margin: 10px 0;
+  }
+
+  small {
+    display: block;
+    color: #999;
+  }
+}
