@@ -2,6 +2,10 @@
   width: 30%;
   height: 100vh;
 
+  @media (max-width: 568px) {
+    width: 50%;
+  }
+
   &-notes {
     height: 100vh;
     overflow-y: scroll;
@@ -17,6 +21,10 @@
   &-title {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 568px) {
+      font-size: 12px;
+    }
   }
 
   p {
@@ -26,10 +34,9 @@
   small {
     display: block;
     color: #999;
-  }
-
-  @media (max-width: 568px) {
-    width: 100%;
+    @media (max-width: 568px) {
+      font-size: 12px;
+    }
   }
 }
 

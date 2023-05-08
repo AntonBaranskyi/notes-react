@@ -17,9 +17,10 @@
     outline: none;
     margin: 2px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 568px) {
       &-input {
         max-width: 100%;
+        font-size: 12px;
       }
     }
   }
