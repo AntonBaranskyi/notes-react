@@ -11,8 +11,16 @@
   }
 
   &-input {
-    width: 200px;
+    width: 100%;
+    max-width: 300px;
     padding-left: 30px;
     outline: none;
+    margin: 2px;
+
+    @media screen and (max-width: 768px) {
+      &-input {
+        max-width: 100%;
+      }
+    }
   }
 }
