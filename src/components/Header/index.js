@@ -17,7 +17,9 @@ function Header() {
   const { addNote, deleteNote, activeNote, textRef } = useContext(NotesContext);
 
   const handleDeleteNote = () => {
-    deleteNote(activeNote);
+    if (window.confirm("Are you sure that you want to delete this note?")) {
+      deleteNote(activeNote);
+    }
   };
 
   return (

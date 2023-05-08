@@ -37,6 +37,7 @@ function WorkSpace() {
           autoFocus
           value={active.title}
           onChange={(e) => onEditField("title", e.target.value)}
+          maxLength={200}
         />
       </div>
 
@@ -45,6 +46,7 @@ function WorkSpace() {
           ref={textRef}
           value={active.text}
           onChange={(e) => onEditField("text", e.target.value)}
+          maxLength={2000}
         />
       </div>
     </div>
