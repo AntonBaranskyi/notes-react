@@ -43,7 +43,7 @@ function WorkSpace() {
       <div className="workspace-textarea">
         <textarea
           ref={textRef}
-          placeholder={active.text}
+          value={active.text}
           onChange={(e) => onEditField("text", e.target.value)}
         />
       </div>

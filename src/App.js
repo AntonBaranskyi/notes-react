@@ -12,7 +12,7 @@ export const NotesContext = createContext();
 initDB(DBConfig);
 
 function App() {
-  const { add, deleteRecord, getAll } = useIndexedDB("notes");
+  const { add, deleteRecord, getAll, update } = useIndexedDB("notes");
   const [notess, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
   const [search, setSearch] = useState("");
@@ -62,6 +62,8 @@ function App() {
     });
 
     setNotes(updatedNotesArr);
+
+    update(updatedNote).then(() => console.log("Updated"));
   };
 
   const onSearch = (items, term) => {
