@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./header.scss";
 import plus from "../../assets/plus.png";
 import remove from "../../assets/delete.png";
 import edit from "../../assets/edit.png";
 import Search from "../Search";
 
-import { useContext } from "react";
 import { NotesContext } from "../../App";
 
 const headerData = [
@@ -15,21 +14,36 @@ const headerData = [
 ];
 
 function Header() {
-  const { addNote } = useContext(NotesContext);
+  const { addNote, deleteNote, activeNote, textRef } = useContext(NotesContext);
+
+  const handleDeleteNote = () => {
+    deleteNote(activeNote);
+  };
+
   return (
     <header className="header">
       <nav className="header__nav">
         {headerData.map(({ img, alt }) => {
+          const isInactive =
+            !activeNote && (alt === "remove" || alt === "edit");
+          const classNames = `header__nav-item ${isInactive ? "inactive" : ""}`;
+
           return (
-            <React.Fragment key={alt}>
-              <div className="header__nav-item">
-                <img
-                  onClick={alt === "plus" ? addNote : null}
-                  src={img}
-                  alt={alt}
-                />
-              </div>
-            </React.Fragment>
+            <div className={classNames} key={alt}>
+              <img
+                onClick={() =>
+                  alt === "plus"
+                    ? addNote()
+                    : alt === "remove"
+                    ? handleDeleteNote()
+                    : alt === "edit"
+                    ? textRef.current.focus()
+                    : null
+                }
+                src={img}
+                alt={alt}
+              />
+            </div>
           );
         })}
       </nav>

@@ -12,7 +12,9 @@ function ListItem() {
 
   return (
     <>
-      {notes.map(({ title, text, id }) => {
+      {notes.map(({ title, text, id, lastModified }) => {
+        const max = 30;
+        const new_text = text.length > max ? text.slice(0, max) + "..." : text;
         return (
           <div
             onClick={() => setActiveNote(id)}
@@ -23,8 +25,14 @@ function ListItem() {
               <h2>{title}</h2>
             </div>
 
-            <p>{text}</p>
-            <small className="note-meta">Last Modified 07/05/2023, 21:24</small>
+            <p>{new_text}</p>
+            <small className="note-meta">
+              Last Modified{" "}
+              {new Date(lastModified).toLocaleDateString("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </small>
           </div>
         );
       })}

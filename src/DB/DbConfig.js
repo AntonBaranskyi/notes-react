@@ -8,7 +8,7 @@ export const DBConfig = {
       storeSchema: [
         {
           title: "name",
-          text: "test",
+          text: "type here",
           lastModified: "",
           id: "",
           options: { unique: false },

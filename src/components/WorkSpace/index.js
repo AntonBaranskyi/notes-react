@@ -1,13 +1,20 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useRef } from "react";
 import "./workSpace.scss";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { NotesContext } from "../../App";
 
 function WorkSpace() {
-  const { getActiveNote } = useContext(NotesContext);
-  const [markdown, setMarkdown] = useState("");
+  const { getActiveNote, onUpdateNote, textRef } = useContext(NotesContext);
 
   let active = getActiveNote();
+
+  const onEditField = (field, value) => {
+    onUpdateNote({
+      ...active,
+      [field]: value,
+      lastModified: Date.now(),
+    });
+  };
 
   if (!active) {
     return <h2 className="no-active">No active note!</h2>;
@@ -24,15 +31,16 @@ function WorkSpace() {
           placeholder="Title"
           autoFocus
           value={active.title}
+          onChange={(e) => onEditField("title", e.target.value)}
         />
       </div>
 
       <div className="workspace-textarea">
         <textarea
-          value={active.text}
-          onChange={(e) => setMarkdown(e.target.value)}
+          ref={textRef}
+          placeholder={active.text}
+          onChange={(e) => onEditField("text", e.target.value)}
         />
-        <ReactMarkdown>{markdown}</ReactMarkdown>
       </div>
     </div>
   );
