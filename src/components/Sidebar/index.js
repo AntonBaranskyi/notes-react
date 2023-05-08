@@ -6,7 +6,6 @@ function SideBar() {
     <div className="sidebar">
       <div className="sidebar-notes">
         <ListItem />
-        <ListItem />
       </div>
     </div>
   );
