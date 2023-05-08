@@ -13,7 +13,7 @@ function ListItem() {
   return (
     <>
       {notes.map(({ title, text, id, lastModified }) => {
-        const max = 30;
+        const max = 20;
         const new_text = text.length > max ? text.slice(0, max) + "..." : text;
         const new_title =
           title.length > max ? title.slice(0, max) + "..." : title;

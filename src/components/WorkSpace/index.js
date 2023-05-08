@@ -49,6 +49,13 @@ function WorkSpace() {
           maxLength={2000}
         />
       </div>
+
+      <div className="workspace-markdown">
+        <h2 className="workspace-markdown__title">{active.title} </h2>
+        <ReactMarkdown className="workspace-markdown__self">
+          {active.text}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 }
