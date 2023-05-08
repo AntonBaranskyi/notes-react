@@ -72,7 +72,9 @@ function App() {
     }
 
     return items.filter(
-      (item) => item.title.indexOf(term) > -1 || item.text.indexOf(term) > -1
+      (item) =>
+        item.title.toLowerCase().indexOf(term) > -1 ||
+        item.text.toLowerCase().indexOf(term) > -1
     );
   };
 
