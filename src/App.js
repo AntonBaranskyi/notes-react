@@ -13,8 +13,9 @@ initDB(DBConfig);
 
 function App() {
   const { add, deleteRecord, getAll } = useIndexedDB("notes");
-  const [notes, setNotes] = useState([]);
+  const [notess, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
+  const [search, setSearch] = useState("");
   const textRef = useRef(null);
 
   useEffect(() => {
@@ -63,9 +64,21 @@ function App() {
     setNotes(updatedNotesArr);
   };
 
-  const getActiveNote = () => {
-    return notes.find(({ id }) => id === activeNote);
+  const onSearch = (items, term) => {
+    if (term.length === 0) {
+      return items;
+    }
+
+    return items.filter(
+      (item) => item.title.indexOf(term) > -1 || item.text.indexOf(term) > -1
+    );
   };
+
+  const getActiveNote = () => {
+    return notess.find(({ id }) => id === activeNote);
+  };
+
+  const notes = onSearch(notess, search);
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }} className="App">
@@ -79,6 +92,7 @@ function App() {
           deleteNote,
           getActiveNote,
           onUpdateNote,
+          setSearch,
         }}
       >
         <Header />

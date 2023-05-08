@@ -22,7 +22,12 @@ function WorkSpace() {
 
   return (
     <div className="workspace">
-      <div className="workspace-time">07/05/2023, 21:24</div>
+      <div className="workspace-time">
+        {new Date(active.lastModified).toLocaleDateString("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+      </div>
 
       <div className="workspace-title">
         <input
